@@ -149,7 +149,7 @@ export default {
         "cache-control": "no-store",
         "referrer-policy": "strict-origin-when-cross-origin",
         "x-content-type-options": "nosniff",
-        "content-security-policy": "default-src 'self'; img-src 'self' https://cdn.jsdelivr.net data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'",
+        "content-security-policy": "default-src 'self'; img-src 'self' https://cdn.jsdelivr.net https://akabab.github.io https://raw.githubusercontent.com data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; frame-ancestors 'none'",
       } });
     } catch (error) {
       console.error(error);
