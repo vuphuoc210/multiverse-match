@@ -10,13 +10,35 @@ An anonymous, link-based Marvel character connections game. Players can solve a 
 - Puzzle management tokens are SHA-256 hashed before storage
 - Public puzzles are unlisted and addressed by random slugs
 
+## Local development
+
+Install the pinned dependencies, initialize the local D1 database, and start the Worker:
+
+```sh
+npm install
+npm run db:migrate:local
+npm run dev
+```
+
+Wrangler prints the local URL (normally `http://localhost:8787`). Keep the dev server running in that terminal. The dev and migration scripts both use `.wrangler/state`; they do not access a hosted database or publish the site.
+
+## Tests
+
+Run the API unit and local integration tests with:
+
+```sh
+npm test
+```
+
+Unit tests exercise request validation and storage error handling directly. The integration test starts a temporary local Worker and D1 database, tests puzzle creation, play tracking, authenticated editing, invalid-token rejection, and deletion, then removes the temporary database.
+
 ## Build
 
 ```sh
 npm run build
 ```
 
-The build copies the deployable Worker modules to `dist/server/`.
+The build copies the deployable Worker modules to `dist/server/` and derives its Wrangler config from the root `wrangler.jsonc`.
 
 ## Refresh the character catalog
 

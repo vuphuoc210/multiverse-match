@@ -77,9 +77,12 @@ button.character-card:focus-visible { outline: 4px solid #f4c95d; outline-offset
 .character-card.compact .character-name { min-height: 32px; font-size: .69rem; }
 .character-card.image-only .portrait-wrap { aspect-ratio: 1 / 1; }
 .solved-stack { display: grid; gap: 9px; margin-bottom: 10px; }
-.solved-group { display: grid; place-items: center; min-height: 78px; padding: 11px; border: 2px solid #121826; border-radius: 8px; text-align: center; }
+.solved-group { display: grid; justify-items: center; gap: 9px; padding: 11px; border: 2px solid #121826; border-radius: 8px; text-align: center; }
 .solved-group strong { font-size: 1rem; text-transform: uppercase; }
-.solved-group span { font-size: .82rem; font-weight: 700; }
+.solved-characters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; width: min(100%, 520px); }
+.solved-characters .character-card { min-width: 0; }
+.solved-characters .portrait-wrap { aspect-ratio: 1 / 1; }
+.solved-characters .character-name { min-height: 30px; padding: 3px; font-size: .64rem; }
 .game-message { min-height: 24px; margin: 18px 0 8px; font-weight: 800; text-align: center; }
 .mistakes { display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 18px; color: #625e58; font-size: .82rem; font-weight: 700; }
 .mistakes i { display: block; width: 11px; height: 11px; background: #c9c1b5; border: 1px solid #121826; border-radius: 50%; }

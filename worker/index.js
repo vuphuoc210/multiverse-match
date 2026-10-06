@@ -27,7 +27,7 @@ function validatePuzzle(value) {
   const groups = value.groups.map((entry) => {
     const label = entry && typeof entry.label === "string" ? entry.label.trim() : "";
     const ids = entry && Array.isArray(entry.characterIds) ? entry.characterIds.filter(Number.isInteger) : [];
-    if (label.length < 2 || label.length > 60) throw new Error("Group labels must be 2–60 characters.");
+    if (label.length < 1 || label.length > 60) throw new Error("Group labels must be 1–60 characters.");
     if (ids.length !== 4 || new Set(ids).size !== 4 || ids.some((id) => !characterIds.has(id))) throw new Error("Each group needs four different catalog characters.");
     return { label, characterIds: ids };
   });

@@ -76,7 +76,7 @@ export function PuzzleBuilder({ initial, slug, manageToken }: { initial?: Puzzle
 
   const used = useMemo(() => new Set(groups.flatMap((group) => group.characterIds)), [groups]);
   const filtered = characters.filter((character) => `${character.name} ${character.realName}`.toLowerCase().includes(query.toLowerCase()));
-  const complete = title.trim().length >= 3 && groups.every((group) => group.label.trim().length >= 2 && group.characterIds.length === 4);
+  const complete = title.trim().length >= 3 && groups.every((group) => group.label.trim().length >= 1 && group.characterIds.length === 4);
 
   function addCharacter(id: number) {
     if (used.has(id)) return;
@@ -141,7 +141,7 @@ export function PuzzleBuilder({ initial, slug, manageToken }: { initial?: Puzzle
     <div className="builder-layout">
       <section className="builder-main">
         <div className="builder-heading"><p className="eyebrow">{managing ? "Private editor" : "No account needed"}</p><h1>{managing ? "Edit your puzzle" : "Create a picture puzzle"}</h1><p>Give each group a connection, then fill it with four characters.</p></div>
-        <label className="field-label">Puzzle title<Input value={title} onChange={(event) => setTitle(event.target.value)} maxLength={80} placeholder="e.g. Secret identities" /></label>
+        <label className="field-label">Puzzle title<Input value={title} onChange={(event) => setTitle(event.target.value)} maxLength={80} placeholder="e.g. Secret identities" /><span className="field-hint">Use at least 3 characters for the title. Group labels can be a single character.</span></label>
         <div className="group-editor-list">
           {groups.map((group, groupIndex) => <section key={groupIndex} className={`group-editor ${activeGroup === groupIndex ? "active" : ""}`} style={{ "--group-color": GROUP_COLORS[groupIndex] } as CSSProperties} onClick={() => setActiveGroup(groupIndex)}>
             <div className="group-number">{groupIndex + 1}</div>

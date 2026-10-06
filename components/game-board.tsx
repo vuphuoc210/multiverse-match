@@ -93,7 +93,12 @@ export function GameBoard({ puzzle }: { puzzle: PuzzleRecord }) {
           return (
             <div className="solved-group" key={groupIndex} style={{ background: GROUP_COLORS[groupIndex] }}>
               <strong>{group.label}</strong>
-              <span>{group.characterIds.map((id) => characterById.get(id)?.name).filter(Boolean).join(", ")}</span>
+              <div className="solved-characters">
+                {group.characterIds.map((id) => {
+                  const character = characterById.get(id);
+                  return character ? <CharacterCard key={id} character={character} compact showName={true} /> : null;
+                })}
+              </div>
             </div>
           );
         })}

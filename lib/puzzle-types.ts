@@ -30,7 +30,7 @@ export function validatePuzzleInput(value: unknown): PuzzleInput {
     const characterIds = Array.isArray(group.characterIds)
       ? group.characterIds.filter((id): id is number => Number.isInteger(id))
       : [];
-    if (label.length < 2 || label.length > 60) throw new Error("Group labels must be 2–60 characters.");
+    if (label.length < 1 || label.length > 60) throw new Error("Group labels must be 1–60 characters.");
     if (characterIds.length !== 4 || new Set(characterIds).size !== 4) throw new Error("Each group needs four different characters.");
     return { label, characterIds };
   });
