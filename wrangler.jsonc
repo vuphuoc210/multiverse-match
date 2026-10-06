@@ -1,15 +1,17 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "multiverse-match",
-  "main": "worker/index.js",
-  "compatibility_date": "2026-10-04",
-  "compatibility_flags": ["nodejs_compat"],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "site-creator-d1",
-      "database_id": "00000000-0000-4000-8000-000000000000",
-      "migrations_dir": "drizzle"
-    }
-  ]
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "multiverse-match",
+	"main": "worker/index.js",
+	"compatibility_date": "2026-10-04",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "multiverse-match",
+			"database_id": "0fed82d8-29d3-41a5-94ba-eec00583d720",
+			"migrations_dir": "drizzle"
+		}
+	]
 }

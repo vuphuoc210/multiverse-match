@@ -4,7 +4,7 @@
 
 Keep the application easy to develop and test locally, then deploy it to a Cloudflare Worker backed by production D1 when explicitly approved. GitHub Pages is not needed; the Worker serves both the frontend and API.
 
-**Publishing is not authorized yet.** Until the owner explicitly approves production setup and deployment, do not create a production D1 database, apply remote migrations, add deployment credentials, or enable an automatic deployment workflow.
+Production setup and deployment have now been explicitly requested. No production D1 database has been created, no remote migrations have been applied, and nothing has been published yet. Continue with the manual, account-authenticated steps below; do not enable automatic deployment as part of this first release.
 
 ```text
 Local development                   Future production (approval required)
