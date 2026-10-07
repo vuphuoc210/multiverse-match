@@ -65,6 +65,7 @@ h1 { margin: 0; font-size: clamp(1.9rem, 6vw, 3.5rem); line-height: .96; letter-
 .portrait-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(7px, 1.5vw, 13px); }
 .character-card { position: relative; display: flex; flex-direction: column; align-items: stretch; min-width: 0; padding: 0; overflow: hidden; color: #121826; background: #e6e1d7; border: 2px solid #121826; border-radius: 8px; box-shadow: 3px 3px 0 #121826; cursor: pointer; transition: transform .12s ease, box-shadow .12s ease, filter .12s ease; }
 button.character-card:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 #121826; }
+.character-card.selected:hover:not(:disabled) { box-shadow: 0 0 0 4px #f4c95d, 5px 5px 0 #121826; transform: translate(-1px, -2px); }
 button.character-card:focus-visible { outline: 4px solid #f4c95d; outline-offset: 3px; }
 .character-card.selected { color: white; background: #d72f35; box-shadow: 0 0 0 4px #f4c95d, 5px 5px 0 #121826; transform: translate(-1px, -2px); }
 .character-card:disabled { cursor: not-allowed; filter: grayscale(1); opacity: .28; }
