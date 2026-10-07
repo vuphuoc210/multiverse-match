@@ -40,6 +40,10 @@ npm run build
 
 The build copies the deployable Worker modules to `dist/server/` and derives its Wrangler config from the root `wrangler.jsonc`.
 
+## Automatic deployment
+
+GitHub Actions runs the tests on pull requests and pushes to `main`. A successful push to `main` applies any pending D1 migrations and deploys the Worker. Add `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` as repository Actions secrets before merging deployment changes. Create a scoped Cloudflare API token with Workers Editor and D1 Edit access for the target account; never put the token in this repository. The workflow serializes production deployments to avoid overlapping migrations.
+
 ## Refresh the character catalog
 
 Download `api/all.json` from [akabab/superhero-api v0.3.0](https://github.com/akabab/superhero-api/tree/0.3.0), then run:

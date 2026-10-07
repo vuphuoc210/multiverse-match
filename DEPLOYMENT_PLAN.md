@@ -4,7 +4,7 @@
 
 Keep the application easy to develop and test locally, then deploy it to a Cloudflare Worker backed by production D1 when explicitly approved. GitHub Pages is not needed; the Worker serves both the frontend and API.
 
-Production setup and deployment have now been explicitly requested. No production D1 database has been created, no remote migrations have been applied, and nothing has been published yet. Continue with the manual, account-authenticated steps below; do not enable automatic deployment as part of this first release.
+Production setup and deployment have been explicitly requested. Automatic deployment is now being configured to run after tests pass on pushes to `main`, including pending remote D1 migrations. Cloudflare credentials must be configured as GitHub Actions secrets before the workflow can deploy.
 
 ```text
 Local development                   Future production (approval required)
@@ -110,11 +110,7 @@ Put the returned database ID in the production Wrangler configuration. A databas
 
 ### 8. Deploy manually first
 
-For the first release, use an explicit, manually run deployment workflow or a deliberate local deployment command. Before applying migrations, review the exact target database and pending migrations. Then apply remote migrations and deploy the Worker. Verify the deployed URL and puzzle lifecycle.
-
-Keep this manual until production deployment and recovery procedures have been exercised. Do not add a push-to-`main` deployment trigger by default.
-
-If automated production deployment is later desired, require a protected GitHub Environment with approval, use a concurrency group to prevent overlapping migrations/deployments, and scope the Cloudflare API token to the intended account and minimum required permissions. Store `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` as GitHub secrets. Cloudflare documents these requirements for non-interactive GitHub Actions deployments. [Cloudflare GitHub Actions guidance](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/)
+The GitHub Actions workflow runs tests for pull requests and pushes to `main`; after a successful `main` push it applies pending remote D1 migrations and deploys the Worker. It uses a concurrency group to prevent overlapping migrations/deployments. Store `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` as GitHub Actions secrets, scoped to the intended account with Workers Editor and D1 Edit permissions. Cloudflare documents these requirements for non-interactive GitHub Actions deployments. [Cloudflare GitHub Actions guidance](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/), [Workers permissions](https://developers.cloudflare.com/workers/authorization/)
 
 ### 9. Manage production migrations safely
 
